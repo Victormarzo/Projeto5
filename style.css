@@ -1,0 +1,43 @@
+body{
+    width: 375px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+}
+*{
+    box-sizing: border-box;
+}
+.menu{
+    height: 80px;
+    background: #FFFFFF;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 22px;
+    padding-right: 23px;
+    position: fixed;
+    
+}
+.superior{
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    top: 0;
+}
+.inferior{
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+    padding-right: 16px;
+    bottom: 0;
+}
+.iconePessoas{
+    font-size: 40px;
+}
+.iconeAviao{
+    font-size: 30px;
+    right: 0px;
+}
+.conteudo{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    height:1000px;
+    background-color: #f3f3f3;
+
+}
