@@ -56,7 +56,7 @@ function loadMsg(resposta){
         if (answer[i].type =='status'){
             chat.innerHTML+=`<div class="msg status"><p>
             
-            (${answer[i].time})&nbsp${answer[i].from}&nbsp${answer[i].text}
+            (${answer[i].time})&nbsp<span>${answer[i].from}</span>&nbsp${answer[i].text}
             </p></div>
         
         
@@ -65,14 +65,14 @@ function loadMsg(resposta){
        }else if(answer[i].type =='message'){
             chat.innerHTML+=`
             <div class="msg"><p>
-            (${answer[i].time})&nbsp${answer[i].from}&nbsppara&nbsp${answer[i].to}:${answer[i].text}
+            (${answer[i].time})&nbsp<span>${answer[i].from}</span>&nbsppara&nbsp<span>${answer[i].to}</span>:${answer[i].text}
             </p></div>
 
         `
         }else if((answer[i].type =='private_message')&&usuario===answer[i].from){
             chat.innerHTML+=`
             <div class="msg reservada"> <p> 
-            (${answer[i].time})&nbsp${answer[i].from}&nbspreservadamente&nbsppara&nbsp${answer[i].to}:${answer[i].text}
+            (${answer[i].time})&nbsp<span>${answer[i].from}</span>&nbspreservadamente&nbsppara&nbsp</span>:${answer[i].text}
             </p></div>
         `
 
