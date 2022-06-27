@@ -48,7 +48,7 @@ function loadMsg(resposta){
     
     chat.innerHTML='';
     if (resposta.status === 200) {
-        console.log("Deuuu boooom");
+        console.log("Deuuu boooom d+");
       }
     let answer=resposta.data;
     for( let i=0;i<answer.length;i++){
