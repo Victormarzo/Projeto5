@@ -30,8 +30,12 @@ function checkOnline(){
         usuarioLog
       );  
       promise.then(deucerto);
+      promise.catch(naodeucerto);
 }
 function deucerto(){
+    console.log("deu certo");
+}
+function naodeucerto(){
     console.log("deu certo");
 }
 
