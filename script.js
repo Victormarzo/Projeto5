@@ -1,55 +1,55 @@
 let usuario;
+let usuarioLog;
 function checkLogin(){
     usuario=prompt('Usuario:');
-    let usuarioLog =
+    usuarioLog =
     {
         name: usuario
     }
     const promise = axios.post(
-        "https://mock-api.driven.com.br/api/v6/uol/participants ",
+        "https://mock-api.driven.com.br/api/v6/uol/participants",
         usuarioLog
       );
-      promise.then(searchMsg,setInterval(checkOnline, 5000));
-      promise.catch(erroNome);
+      promise.then(searchMsg);
+      promise.catch(loginError);
     }
 
-function erroNome(error){
+function loginError(error){
     alert("Nome em uso, escolha outro nome.")
     checkLogin();
 }
-checkLogin();
 
-function alertai(){
-    alert("Da sim po");
-}
-
+checkLogin();  
+setInterval(checkOnline, 5000);
 
 
 function checkOnline(){
-    let usuarioOnline =
-    {
-        name: usuario
-    }
+    
     const promise = axios.post(
-        "https://mock-api.driven.com.br/api/v6/uol/participants ",
-        usuarioOnline
-      );     
+        "https://mock-api.driven.com.br/api/v6/uol/status",
+        usuarioLog
+      );  
+      promise.then(deucerto);
+}
+function deucerto(){
+    console.log("deu certo");
 }
 
 function searchMsg(){
     const promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
-    promise.then(loadMsg)
+    promise.then(loadMsg);
+    promise.catch(errorMsg);
 }
-setInterval(searchMsg, 10000)
+function errorMsg(error){
+    console.log(error.response.status);
+}
+
 
 function loadMsg(resposta){
-    console.log('foi');
+    
     let chat=document.querySelector(".chat");
     
     chat.innerHTML='';
-    if (resposta.status === 200) {
-        console.log("Deuuu boooom d+");
-      }
     let answer=resposta.data;
     for( let i=0;i<answer.length;i++){
         
@@ -58,16 +58,12 @@ function loadMsg(resposta){
             
             (${answer[i].time})&nbsp<span>${answer[i].from}</span>&nbsp${answer[i].text}
             </p></div>
-        
-        
-        
         `
        }else if(answer[i].type =='message'){
             chat.innerHTML+=`
             <div class="msg"><p>
             (${answer[i].time})&nbsp<span>${answer[i].from}</span>&nbsppara&nbsp<span>${answer[i].to}</span>:${answer[i].text}
             </p></div>
-
         `
         }else if((answer[i].type =='private_message')&&usuario===answer[i].from){
             chat.innerHTML+=`
@@ -80,9 +76,10 @@ function loadMsg(resposta){
     
     let msg = document.querySelectorAll(".msg")
     ultimaMsg = msg[msg.length-1]
-    ultimaMsg.scrollIntoView()
+    ultimaMsg.scrollIntoView();
 
-    }
+}
+setInterval(searchMsg, 3000)
 function sendMsg(){
     let msg=document.querySelector(".caixaInput").value;
     let msgs={
@@ -101,6 +98,6 @@ function sendMsg(){
 }
 function erroMsg(error){
     console.log(error.response.status);
-    alert("Usuario deslogado, entre novamente")
-    window.location.reload()
+    alert("Usuario deslogado, entre novamente");
+    window.location.reload();
 }

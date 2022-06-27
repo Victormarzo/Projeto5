@@ -9,7 +9,7 @@ body{
 .menu{
     height: 80px;
     background: #FFFFFF;
-    width: 100%;
+    width: 375px;
     display: flex;
     align-items: center;
     justify-content: space-between;
